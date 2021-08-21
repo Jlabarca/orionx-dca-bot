@@ -1,3 +1,24 @@
 {
-  "log_level": "debug"
+  "app_name": "orionx_dca",
+  "log_level": "debug",
+  "date_format": "DD-MM-YYYY HH:mm:ss",
+  "exchanges": [{
+    "name": "orionx-1",
+    "type": "ORIONX",
+    "apiKey": "-",
+    "secretKey": "-",
+    "apiUri": "https://api2.orionx.com/graphql"
+  }],
+  "investments": [{
+    "exchange": "orionx-1",
+    "cron": "0 0 0 * * *",
+    "market": "ETHCLP",
+    "amount": 10000
+  },
+  {
+    "exchange": "orionx-1",
+    "cron": "0 0 0 * * *",
+    "market": "XRPCLP",
+    "amount": 5000
+  }]
 }
