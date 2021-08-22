@@ -1,0 +1,32 @@
+{
+  "name": "orionx-dca-bot",
+  "version": "0.1.0",
+  "description": "Orionx DCA Bot",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "npm run build:live",
+    "build": "tsc -p .",
+    "build:live": "nodemon -L --watch 'src/**/*.ts' --exec \"ts-node\" src/app.ts"
+  },
+  "repository": "https://github.com/Jlabarca/orionx-dca-bot",
+  "author": "Julio Labarca",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cron": "^1.7.3",
+    "@types/nconf": "^0.10.1",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.2.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "@types/winston": "^2.4.4",
+    "cron": "^1.8.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "nconf": "^0.11.3",
+    "orionx-sdk": "^1.3.9",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  }
+}
