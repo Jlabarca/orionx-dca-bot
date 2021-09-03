@@ -14,6 +14,9 @@ export class DcaBot {
             this.initializeExchange(exchange);
         });
 
+        config.investments.forEach(investment => {
+            this.cronSchedule(investment)
+        });
     }
 
     private initializeExchange(exchange: Exchange) {
@@ -28,5 +31,31 @@ export class DcaBot {
         }
 
         this.exchanges.set(exchange.name, exchange);
+    }
+
+	private cronSchedule(investment: Investment) {
+		log.debug(`Initializing Investment ${investment.amount} ${investment.market} on ${investment.exchange} at ${investment.cron}`);
+		var CronJob = cron.CronJob;
+		var job = new CronJob(investment.cron, () => {
+			this.executePurchase(investment);
+		});
+		job.start();
+	}
+
+    private async executePurchase(investment: Investment) {
+        //get exchange
+        let exchange: Exchange = this.exchanges.get(investment.exchange);
+        if(_.isNil(exchange)) {
+            log.error(`Exchange ${investment.exchange} not found`);
+            return;
+        }
+
+        
+        switch (exchange.type as ExchangeType) {
+            case ExchangeType.ORIONX:
+                break;
+            default:
+                break;
+        }
     }
 }
