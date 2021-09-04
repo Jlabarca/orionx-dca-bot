@@ -53,9 +53,31 @@ export class DcaBot {
         
         switch (exchange.type as ExchangeType) {
             case ExchangeType.ORIONX:
+                if (this.checkCurrencyBalance(investment)) {
+                    this.executeOrionxPurchase(investment);
+                }
                 break;
             default:
                 break;
         }
+    }
+
+    private async checkCurrencyBalance(investment: Investment): Promise<boolean> {
+        const currency = investment.market.substr(3, 3);
+        let wallet = await orionx.wallet({currencyCode: currency});
+        log.info(`${currency} available balance ${wallet.availableBalance}`)
+
+        if (wallet.availableBalance < investment.amount) {
+            log.warn('Not enough currency balance');
+            return false;
+        }
+
+        return true;
+    }
+
+    private async executeOrionxPurchase(investment: Investment) {
+        log.info(`Executing market purchase of ${investment.amount} ${investment.market}`)
+        let order = await orionx.placeMarketOrder(({marketCode: investment.market, amount: investment.amount, sell: false}));
+        log.info(JSON.stringify(order));
     }
 }
