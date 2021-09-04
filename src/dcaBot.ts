@@ -5,18 +5,30 @@ import cron from 'cron'
 import _ from 'lodash'
 
 export class DcaBot {
+    private config: DcaBotConfig;
     private exchanges: Map<string, Exchange> = new Map();
 
     constructor(config: DcaBotConfig) {
         log.info('DcaBot - initializing exchanges');
-
+        this.config = config;
         config.exchanges.forEach(exchange => {
             this.initializeExchange(exchange);
         });
+    }
 
-        config.investments.forEach(investment => {
+    public run() {
+        this.config.investments.forEach(investment => {
             this.cronSchedule(investment)
         });
+    }
+
+    public manual(investmentName: string) {
+        const investment = this.config.investments.find(investment => investment.name === investmentName)
+        if(_.isNil(investment)) {
+            log.error(`Investment ${investmentName} not found`);
+            return;
+        }
+        this.executePurchase(investment);
     }
 
     private initializeExchange(exchange: Exchange) {
