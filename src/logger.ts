@@ -1,7 +1,7 @@
 import winston from 'winston'
 import moment from 'moment'
 import 'winston-daily-rotate-file';
-import {default as configFile} from "../../config.json";
+import {default as configFile} from "../config.json";
 
 const log = winston.createLogger({
     level: configFile.log_level,

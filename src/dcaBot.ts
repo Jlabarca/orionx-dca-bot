@@ -1,4 +1,4 @@
-import { DcaBotConfig, Exchange, ExchangeType, Investment } from './DcaBotConfig'
+import { DcaBotConfig, Exchange, ExchangeType, Investment } from './dcaBotConfig'
 import log from './logger';
 import orionx from 'orionx-sdk'
 import cron from 'cron'

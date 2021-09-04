@@ -1,6 +1,4 @@
-import nconf from 'nconf'
-import {default as configFile} from "../../config.json";
-import log from './logger';
+import {default as configFile} from "../config.json";
 
 export enum ExchangeType { ORIONX = 'ORIONX' }
 
@@ -21,6 +19,7 @@ export interface Exchange {
 }
 
 export interface Investment {
+    name:      string;
     exchange: string;
     cron:     string;
     market:   string;
@@ -29,15 +28,7 @@ export interface Investment {
 
 
 export class ConfigLoader {
-
-    appName: string = 'dca-bot';
-    dateFormat = 'DD-MM-YYYY HH:mm:ss';
-
-    constructor() {
-    }
-
     static load(): DcaBotConfig {
-        log.info('load');
         return configFile;
     }
 }
