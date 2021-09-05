@@ -10,14 +10,16 @@
     "apiUri": "https://api2.orionx.com/graphql"
   }],
   "investments": [{
+    "name": "daily-eth",
     "exchange": "orionx-1",
-    "cron": "0 0 0 * * *",
+    "cron": "0 0 5 * * *",
     "market": "ETHCLP",
     "amount": 10000
   },
   {
+    "name": "daily-xrp",
     "exchange": "orionx-1",
-    "cron": "0 0 0 * * *",
+    "cron": "0 0 5 * * *",
     "market": "XRPCLP",
     "amount": 5000
   }]
