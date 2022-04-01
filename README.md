@@ -9,7 +9,7 @@ BOT para ejecutar compras recurrentes en el exchange orionx
 - [ ] Binance SDK
 
 ## Como usar:
-Idealmente configurando transferencias automaticas a orionx y seteando el bot para que haga compras cada x tiempo de algun monto y monedas especificos. p
+Idealmente configurando transferencias automaticas a orionx y seteando el bot para que haga compras cada x tiempo de algun monto y monedas especificos.
 
 Para configurarlo debemos seguir los siguientes pasos:
 
