@@ -1,5 +1,5 @@
-import { DcaBot } from './dcaBot'
-import { ConfigLoader, DcaBotConfig } from './dcaBotConfig'
+import { DcaBot } from './dca-bot'
+import { ConfigLoader, DcaBotConfig } from './dca-bot-config'
 import { Command  } from 'commander'
 
 const program = new Command();
